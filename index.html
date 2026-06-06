@@ -1,0 +1,428 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sachin Chaudhary | Full Stack Developer</title>
+  <style>
+    :root {
+      --bg: #0b1320;
+      --surface: #102a43;
+      --text: #e0e6ed;
+      --muted: #98a8c6;
+      --accent: #38bdf8;
+      --border: rgba(255,255,255,0.08);
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.12), transparent 28%),
+                  linear-gradient(180deg, #0b1320 0%, #0d1a2e 100%);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: clamp(2.25rem, 3vw, 3rem);
+      letter-spacing: -0.04em;
+    }
+
+    header p {
+      margin: 0.5rem 0 0;
+      color: var(--muted);
+      max-width: 36rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.16);
+      padding: 0.65rem 1rem;
+      border-radius: 999px;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(56, 189, 248, 0.12);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: minmax(0, 1.1fr) minmax(260px, 360px);
+      align-items: center;
+      padding: 2rem 0 3rem;
+    }
+
+    .hero-copy h2 {
+      margin-top: 0;
+      font-size: clamp(1.5rem, 2vw, 2.5rem);
+      color: var(--accent);
+      letter-spacing: -0.03em;
+    }
+
+    .hero-copy p {
+      max-width: 62ch;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.75rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.95rem 1.4rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      border: 1px solid transparent;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .button-primary {
+      background: var(--accent);
+      color: #071c2c;
+    }
+
+    .button-secondary {
+      color: var(--text);
+      border-color: rgba(255,255,255,0.18);
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .profile-card {
+      padding: 2rem;
+      border: 1px solid var(--border);
+      border-radius: 32px;
+      background: rgba(255,255,255,0.03);
+      box-shadow: var(--shadow);
+    }
+
+    .profile-card h3 {
+      margin: 0 0 0.5rem;
+    }
+
+    .profile-card p {
+      margin: 0 0 1.25rem;
+      color: var(--muted);
+    }
+
+    .stats {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .stat {
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.75rem;
+      margin-bottom: 0.2rem;
+    }
+
+    section {
+      margin-top: 3rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-header h2 {
+      margin: 0;
+      font-size: 1.75rem;
+    }
+
+    .section-header span {
+      color: var(--muted);
+    }
+
+    .cards {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .card {
+      padding: 1.75rem;
+      border-radius: 28px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.025);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .tag-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .tag-list li {
+      background: rgba(5, 78, 35, 0.18);
+      color: #f1c40f;
+      padding: 0.55rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      border: 1px solid rgba(241, 196, 15, 0.25);
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .contact-item {
+      padding: 1.5rem;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      color: var(--muted);
+    }
+
+    .contact-item strong {
+      display: block;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <p style="margin:0; color: var(--accent); text-transform: uppercase; letter-spacing: 0.2em; font-weight:700; font-size:0.85rem;">Full Stack Developer</p>
+        <h1>Sachin Chaudhary</h1>
+        <p>Building modern, scalable web applications with JavaScript, Node.js, React, and cloud-first architectures. I turn product ideas into polished user experiences.</p>
+      </div>
+      <nav class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <h2>Hi, I’m Sachin — a full-stack developer creating responsive apps with elegant code.</h2>
+        <p>I specialize in building fast, accessible web applications from concept to deployment. My workflow includes UX-driven design, clean frontend development, and reliable backend services.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#contact">Hire Me</a>
+          <a class="button button-secondary" href="#projects">View Work</a>
+        </div>
+      </div>
+
+      <aside class="profile-card">
+        <h3>Profile</h3>
+        <p>I create production-ready web applications using modern stacks with a strong emphasis on performance, maintainability, and collaboration.</p>
+        <div class="stats">
+          <div class="stat">
+            <strong>5+</strong>
+            Years experience
+          </div>
+          <div class="stat">
+            <strong>20+</strong>
+            Delivered projects
+          </div>
+          <div class="stat">
+            <strong>React • Node</strong>
+            Primary stack
+          </div>
+          <div class="stat">
+            <strong>UI + API</strong>
+            Full stack delivery
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="skills">
+      <div class="section-header">
+        <h2>Skills</h2>
+        <span>Technologies I use</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <h3>Frontend Development</h3>
+          <p>Responsive interfaces, component-driven design, and polished animations. I build UIs that feel intuitive on desktop and mobile.</p>
+          <ul class="tag-list">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>React</li>
+            <li>TypeScript</li>
+            <li>Tailwind CSS</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Backend & APIs</h3>
+          <p>RESTful APIs, database modeling, authentication, and server-side logic. I create stable backend systems that scale with your product.</p>
+          <ul class="tag-list">
+            <li>Node.js</li>
+            <li>Express</li>
+            <li>MongoDB</li>
+            <li>PostgreSQL</li>
+            <li>GraphQL</li>
+            <li>Firebase</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Deployment & Collaboration</h3>
+          <p>CI/CD setup, cloud deployment, and team workflows. I make sure projects are easy to maintain, deploy, and iterate on quickly.</p>
+          <ul class="tag-list">
+            <li>Git</li>
+            <li>GitHub</li>
+            <li>Docker</li>
+            <li>Vercel</li>
+            <li>Netlify</li>
+            <li>AWS</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-header">
+        <h2>Featured Projects</h2>
+        <span>Selected work</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <h3>Project Management Dashboard</h3>
+          <p>A task tracking and reporting app with real-time collaboration, role-based access, and analytics dashboards to keep teams aligned.</p>
+          <ul class="tag-list">
+            <li>React</li>
+            <li>Node.js</li>
+            <li>Express</li>
+            <li>MongoDB</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>E-commerce Web App</h3>
+          <p>A responsive shopping experience with product search, secure checkout, inventory management, and order history tracking.</p>
+          <ul class="tag-list">
+            <li>Next.js</li>
+            <li>Stripe</li>
+            <li>Firebase Auth</li>
+            <li>Tailwind CSS</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Custom CRM Platform</h3>
+          <p>Customer relationship management tool with contact automation, lead tracking, and reporting features for small business growth.</p>
+          <ul class="tag-list">
+            <li>React</li>
+            <li>PostgreSQL</li>
+            <li>REST API</li>
+            <li>Docker</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-header">
+        <h2>Contact</h2>
+        <span>Let’s build something great together</span>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <strong>Email</strong>
+          <a href="mailto:sachin@example.com" style="color: var(--accent); text-decoration:none;">sachin@example.com</a>
+        </div>
+        <div class="contact-item">
+          <strong>GitHub</strong>
+          <a href="https://github.com/Sac207" target="_blank" rel="noreferrer" style="color: var(--accent); text-decoration:none;">github.com/Sac207</a>
+        </div>
+        <div class="contact-item">
+          <strong>LinkedIn</strong>
+          <a href="https://www.linkedin.com/in/sachin-chaudhary" target="_blank" rel="noreferrer" style="color: var(--accent); text-decoration:none;">linkedin.com/in/sachin-chaudhary</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Crafted by Sachin Chaudhary — Full Stack Developer.</p>
+    </footer>
+  </div>
+</body>
+</html>
