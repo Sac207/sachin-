@@ -1,2 +1,3 @@
 # sachin-
 This is my first git repository.
+Author - Sachin chaudhary
